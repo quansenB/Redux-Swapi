@@ -16,29 +16,28 @@ export function fetchData() {
     axios
       .get("https://swapi.co/api/people")
       .then(res => {
-        debugger;
-        dispatch(addCharacters(res.results));
+        dispatch(addCharacters(res.data.results));
+        dispatch(success());
       })
       .catch(err => {
+        dispatch(failure());
         console.log("Error while fetching characters. Please try again");
       })
-      .finally() =>{
-        dispatch(isFetching(false));
-    }
+      .finally(dispatch(isFetching(false)));
   };
 }
 
-function isFetching(bool) {
+export function isFetching(bool) {
   return {
     type: FETCH,
     payload: bool
   };
 }
 
-function addCharacters(payload) {
+export function addCharacters(res) {
   return {
-    type: ADD_CARACTERS,
-    payload: payload
+    type: ADD_CHARACTERS,
+    payload: res
   };
 }
 
