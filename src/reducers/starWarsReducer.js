@@ -9,26 +9,35 @@ import {
 } from "../actions";
 import { combineReducers } from "redux";
 
-const initialState = {
+const initialStateChars = {
   // Array characters, Boolean fetching, null error.
   characters: [],
   fetching: false,
-  error: "",
+  error: ""
+};
+/* 
+const initialStateFetching = {
+  fetching: false
 };
 
-export const charsReducer = (state = initialState, action) => {
+const initialStateError = {
+  error: ""
+}; */
+
+export const charsReducer = (state = initialStateChars, action) => {
   switch (action.type) {
     // Fill me in with the important reducers
     // action types should be FETCHING, SUCCESS and FAILURE
     // your switch statement should handle all of these cases.
     case ADD_CHARACTERS:
-      return {characters: action.payload, fetching: false, error: ""}
+      console.log({ characters: action.payload, fetching: false, error: "" });
+      return { characters: action.payload, fetching: false, error: "" };
     case FETCH:
-      return {...state , fetching: action.payload}
+      return { ...state, fetching: action.payload };
     case SUCCESS:
-      return {...state , error: ""}
+      return { ...state, error: "" };
     case FAILURE:
-      return {...state , error: "Fetching failed, try again"}
+      return { ...state, error: "Fetching failed, try again" };
     default:
       return state;
   }

@@ -6,9 +6,9 @@ const CharacterList = props => {
   return (
     <ul>
       {console.log(props.characters)}
-      {/* props.characters.map(character => {
+      {props.characters.map(character => {
         return <Character key={character.name} character={character} />;
-      }) */}
+      })}
     </ul>
   );
 };
